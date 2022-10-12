@@ -5,9 +5,9 @@ const authRoutes = require("./routes/auth");
 const messageRoutes = require("./routes/messages");
 const app = express();
 const socket = require("socket.io");
-const MONGO_URL = require("./config.js");
+//import MONGO_URL from "./config.js";
 //require("dotenv").config();
-
+const MONGO_URL="mongodb+srv://yunki:yunki1234@cluster0.c6hy5f6.mongodb.net/chat?retryWrites=true&w=majority";
 app.use(cors());
 app.use(express.json());
 
@@ -27,7 +27,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
 
-const server = app.listen(process.env.PORT || '3000', () =>
+const server = app.listen(process.env.PORT || 3000, () =>
   console.log(`Server started on ${process.env.PORT}`)
 );
 const io = socket(server, {
